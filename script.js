@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-
     // Select DOM elements
     const addButton = document.getElementById('add-task-btn');
     const taskInput = document.getElementById('task-input');
@@ -18,17 +17,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Create a new list item
         const li = document.createElement('li');
-        li.textContent = taskText;
+        li.textContent = taskText; // set task text
 
         // Create a remove button
         const removeBtn = document.createElement('button');
         removeBtn.textContent = "Remove";
         removeBtn.className = 'remove-btn';
 
-        // Add event to remove the task
-        removeBtn.onclick = function() {
+        // Add event to remove the task when clicked
+        removeBtn.addEventListener('click', function() {
+            // Remove the li element from the taskList
             taskList.removeChild(li);
-        };
+        });
 
         // Append remove button inside li
         li.appendChild(removeBtn);
@@ -36,8 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add li to the task list
         taskList.appendChild(li);
 
-        // Clear the input field
+        // Clear the input field and focus it for convenience
         taskInput.value = "";
+        taskInput.focus();
     }
 
     // Add task on button click
@@ -49,7 +50,3 @@ document.addEventListener('DOMContentLoaded', function() {
             addTask();
         }
     });
-
-    // Invoke addTask on DOMContentLoaded (as required by instructions)
-    addTask();
-});
